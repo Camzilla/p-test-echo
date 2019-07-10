@@ -1,0 +1,97 @@
+// CSS for modules/blocks
+// such as sections, blockquotes, imageblocks..
+//
+// Divide into multiple files if necessary.
+//
+// Clean out comments when
+// starting up the project! :)
+
+.jumbo { @extend %flex; width: 100%; background: rgba(#d8d8d8, .36);
+    &__section { width: 100%; padding: 20px;
+
+        @include breakpoint(md) {
+            flex: 1 0 50%; max-width: 50%; padding: 40px;
+        }
+    }
+
+    &__header { margin: 65px -10px 20px; position: relative; font-size: 4.9rem; line-height: 1; font-weight: bold; background-image: linear-gradient(to bottom, #d1aaff 100%, #d1aaff 100%); background-size: 100% 16px; background-repeat: no-repeat; background-position-y: 86%; display: inline; padding: 0 10px;
+        box-decoration-break: clone; -webkit-box-decoration-break: clone; -ms-box-decoration-break: clone; -o-box-decoration-break: clone; }
+
+    &__image {
+        @include breakpoint(sm) {
+            margin-right: -40px; 
+        }
+        @include breakpoint(md) {
+            margin-right: -80px;
+        }
+    }
+}
+
+.block-area {}
+
+.list { @extend %flex; margin: 10px 0;
+
+    @include breakpoint(sm) {
+        margin: 10px -10px;
+    }
+
+    @include breakpoint(md) {
+        margin: 20px -20px;
+    }
+
+    &__item { width: 100%; padding: 10px 0;
+
+        @include breakpoint(sm) {
+            flex: 1 0 50%; max-width: 50%; padding: 10px;
+        }
+
+        @include breakpoint(md) {
+            flex: 1 0 25%; max-width: 25%; padding: 20px;
+        }
+
+        &-link { display: block; position: relative; color: white; text-decoration: none;
+            &:hover .list__item-image {
+                @include breakpoint(sm) {
+                    margin: -10px;
+                }
+                @include breakpoint(md) {
+                    margin: -20px;
+                }
+            }
+            &:hover .list__item-content {
+                @include breakpoint(sm) {
+                    opacity: 1; left: -10px; right: -10px;
+
+                    h2 { padding: 25px 0 0 25px; }
+
+                    .list__item-hint { padding: 20px 26px 19px; }
+                }
+
+                @include breakpoint(md) {
+                    left: -20px; right: -20px;
+                }
+            }
+        }
+        &-content { transition: .3s; position: absolute; top: 0; bottom: 0; left: 0; right: 0; background: rgba(#ac67ff, .75);
+            display: flex; flex-direction: column; justify-content: space-between;
+
+            @include breakpoint(md) {
+                opacity: 0;
+            }
+
+            h2 { transition: .3s; padding: 0; font-size: 2.7rem; font-weight: bold; line-height: 30px;
+
+                @include breakpoint(sm-max) {
+                    padding: 20px;
+                }
+            }
+        }
+        &-hint { @extend %flex; transition: .3s; align-items: center; background: #ac67ff; text-transform: uppercase; padding: 0; font-weight: bold; letter-spacing: 1.42px; font-size: 1.6rem;
+            @include breakpoint(sm-max) {
+                padding: 20px;
+            }
+        }
+        &-image { transition: .3s; }
+    }
+
+}

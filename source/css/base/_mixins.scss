@@ -1,0 +1,35 @@
+
+$breakpoints: (
+    'xs':  (max-width: $xs),
+    'sm':  (min-width: $sm),
+    'sm-max':  (max-width: $sm),
+    'md':  (min-width: $md),
+    'md-max':  (max-width: $md),
+    //'lg':  (min-width: $lg)
+);
+
+@mixin breakpoint($state) {
+    @if map-has-key($breakpoints, $state) {
+        @media #{inspect(map-get($breakpoints, $state))} {
+            @content;
+        }
+    }
+    @else {
+        @warn "Couldn't find a breakpoint named `#{$state}`.";
+    }
+}
+
+@function z($name) {
+    @if index($z-indexes, $name) {
+        @return (length($z-indexes) - index($z-indexes, $name)) + 1;
+    } @else {
+        @warn 'There is no item "#{$name}" in this list; choose one of: #{$z-indexes}';
+        @return null;
+    }
+}
+$z-indexes: (
+    "navigation",
+    "above-content",
+    "content"
+    // ..additional items
+);
